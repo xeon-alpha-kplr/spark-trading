@@ -1,0 +1,13 @@
+import requests
+import pandas as pd
+
+# Remplacez 'YOUR_API_KEY' par votre propre clé d'API Alpha Vantage
+api_key = '5Z0KTCP5WN59S45P'
+symbol = 'EURUSD'  # Paire de devises pour laquelle vous souhaitez récupérer les taux de change
+
+# Faites une requête à l'API pour obtenir les données
+response = requests.get(f'https://www.alphavantage.co/query?function=FX_DAILY&from_symbol={symbol[:3]}&to_symbol={symbol[3:]}&apikey=5Z0KTCP5WN59S45P')
+
+# Convertissez la réponse en un DataFrame pandas
+data = pd.DataFrame(response.json()['Time Series FX (Daily)']).T
+print(data)
