@@ -1,0 +1,39 @@
+import matplotlib.pyplot as plt
+import random
+from IPython import display
+import time
+
+# Initialisation des valeurs
+x = [0]  # Liste des indices
+y = [0]  # Liste des valeurs
+value = 0
+
+# Création de la figure pour le graphique
+fig, ax = plt.subplots()
+
+while True:
+    # Choix aléatoire entre +1 et -1
+    increment = random.choice([1, -1])
+
+    # Mise à jour de la valeur
+    value += increment
+
+    # Ajout de la nouvelle valeur aux listes
+    x.append(x[-1] + 1)
+    y.append(value)
+
+    # Effacer la figure précédente
+    ax.clear()
+
+    # Affichage du graphique à courbe simple
+    ax.plot(x, y)
+    ax.set_xlabel('Index')
+    ax.set_ylabel('Value')
+    ax.set_title('Évolution aléatoire')
+
+    # Afficher le graphique
+    display.display(fig)
+    display.clear_output(wait=True)
+
+    # Pause d'une seconde avant la prochaine mise à jour
+    time.sleep(1)
